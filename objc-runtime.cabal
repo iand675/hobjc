@@ -1,0 +1,38 @@
+name:                objc-runtime
+version:             0.1.0.0
+synopsis:            Bindings to the Objective-C runtime library
+description:         Bindings to the Objective-C runtime library
+homepage:            https://github.com/iand675/hs-objc-runtime
+license:             BSD3
+license-file:        LICENSE
+author:              Author name here
+maintainer:          example@example.com
+copyright:           2016 Author name here
+category:            Web
+build-type:          Simple
+-- extra-source-files:
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Language.ObjC.Runtime
+  build-depends:       base >= 4.7 && < 5, mtl, managed, libffi, StateVar, vector
+                       -- playground deps
+                       , vector-algorithms
+  default-language:    Haskell2010
+  extra-libraries:     objc
+  frameworks:          Foundation, Cocoa
+
+test-suite hobj-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , hobj
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/iand675/hs-objc-runtime
+
